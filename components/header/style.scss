@@ -1,0 +1,30 @@
+@use "@/app/(client)/scss/variables" as *;
+
+header {
+  width: 100vw;
+  padding: 0 4vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  border-bottom: 1px solid $light;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: $dark;
+  z-index: 999;
+
+  a {
+    color: $link;
+
+    &:hover {
+      color: $hover;
+    }
+  }
+
+  .account {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "auth-web-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^4.27.5",
+    "@sanity/ui": "^1.9.3",
+    "@sanity/vision": "^3.21.1",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1",
+    "next": "14.0.4",
+    "next-sanity": "^7.0.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "sanity": "^3.21.1",
+    "sass": "^1.69.5"
+  },
+  "devDependencies": {
+    "@types/file-saver": "^2.0.7",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
+  }
+}
