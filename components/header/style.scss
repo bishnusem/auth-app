@@ -27,4 +27,17 @@ header {
     align-items: center;
     gap: 2vw;
   }
+
+  .sign-in {
+    button {
+      background-color: $link;
+      border: none;
+      border-radius: 10px;
+      padding: 5px 10px;
+
+      &:hover {
+        background-color: $hover;
+      }
+    }
+  }
 }
