@@ -1,14 +1,12 @@
 import { getProjects } from "@/sanity/sanity-utils";
 import Image from "next/image";
 import Link from "next/link";
-import DownloadButton from "./DownloadButton";
 
 const AdminDashboard = async () => {
   const projects = await getProjects();
 
   return (
     <section id="adminDashboard">
-      <DownloadButton projects={projects} />
       <div className="all">
         {projects.map((project) => (
           <Link key={project._id} href={`/dashboard/${project.slug}`}>

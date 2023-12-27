@@ -4,9 +4,11 @@ import Link from "next/link";
 import "./style.scss";
 import { UserButton, useUser } from "@clerk/nextjs";
 import { SignInButton } from "@clerk/nextjs";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const { user, isLoaded } = useUser();
+  const pathname = usePathname();
 
   return (
     <header>
@@ -15,9 +17,9 @@ const Header = () => {
         <div className="account">
           <UserButton afterSignOutUrl="/" />
         </div>
-      ) : (
+      ) : pathname === "/auth" ? null : (
         <div className="sign-in">
-          <SignInButton />
+          <Link href="/auth">Sign in</Link>
         </div>
       )}
     </header>

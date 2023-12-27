@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.27.5",
+    "@clerk/themes": "^1.7.9",
     "@sanity/ui": "^1.9.3",
     "@sanity/vision": "^3.21.1",
     "file-saver": "^2.0.5",
