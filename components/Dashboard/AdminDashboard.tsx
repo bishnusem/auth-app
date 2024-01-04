@@ -15,22 +15,23 @@ const AdminDashboard = async () => {
         ))}
       </div>
       <>
-        {projects.map((project) => (
-          <div key={project._id} className="projects">
-            <div className="project-images">
-              {project.images.map((image) => (
-                <div key={image._id} className="img-container">
-                  <Image
-                    src={image.url}
-                    alt={image._id}
-                    fill
-                    sizes="(max-width: 768px) 600px, (max-width: 1200px) 1000px, 2000px"
-                  />
-                </div>
-              ))}
+        {projects &&
+          projects.map((project) => (
+            <div key={project._id} className="projects">
+              <div className="project-images">
+                {project.images.map((image) => (
+                  <div key={image._id} className="img-container">
+                    <Image
+                      src={image.url}
+                      alt={image._id}
+                      fill
+                      sizes="(max-width: 768px) 600px, (max-width: 1200px) 1000px, 2000px"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </>
     </section>
   );
