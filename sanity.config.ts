@@ -4,7 +4,7 @@ import schemas from "./sanity/schemas";
 import { visionTool } from "@sanity/vision";
 
 const config = defineConfig({
-  projectId: "njd1fi23",
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "",
   dataset: "production",
   title: "auth xxx",
   apiVersion: "2023-12-10",
