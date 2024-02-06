@@ -1,22 +1,46 @@
+"use client";
+
 import { getProjects } from "@/sanity/sanity-utils";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const AdminDashboard = async () => {
-  const projects = await getProjects();
+type Project = {
+  _id: string;
+  createdAt: Date;
+  name: string;
+  slug: string;
+  images: [
+    image: {
+      _id: string;
+      url: string;
+    }
+  ];
+};
+
+const AdminDashboard = () => {
+  const [projectData, setProjectData] = useState<Project[]>();
+
+  useEffect(() => {
+    const fetchProject = async () => {
+      const projects = await getProjects();
+      setProjectData(projects);
+    };
+    fetchProject();
+  }, []);
 
   return (
     <section id="adminDashboard">
       <div className="all">
-        {projects.map((project) => (
+        {projectData?.map((project) => (
           <Link key={project._id} href={`/dashboard/${project.slug}`}>
             <h4>{project.name}</h4>
           </Link>
         ))}
       </div>
       <>
-        {projects &&
-          projects.map((project) => (
+        {projectData &&
+          projectData.map((project) => (
             <div key={project._id} className="projects">
               <div className="project-images">
                 {project.images.map((image) => (
