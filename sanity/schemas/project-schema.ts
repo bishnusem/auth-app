@@ -9,6 +9,14 @@ const project = {
       type: "string",
     },
     {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "name",
+      },
+    },
+    {
       name: "images",
       title: "Images",
       type: "array",
