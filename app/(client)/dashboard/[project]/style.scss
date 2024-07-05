@@ -3,6 +3,7 @@
 #project {
   margin: 50px 0;
   width: 100vw;
+  max-width: 100%;
   padding: 0 4vw;
   display: flex;
   flex-direction: column;
@@ -59,14 +60,16 @@
   }
 }
 
-/* 
 //*------------> tablet
 
 @media screen and (min-width: 820px) {
-
+  #project {
+    .loading {
+      bottom: 2vw;
+      right: 2vw;
+    }
+  }
 }
-
- */
 
 //*---------->> desktop
 
@@ -74,6 +77,9 @@
   #project {
     .title {
       width: auto;
+    }
+    .loading {
+      font-size: 0.8rem;
     }
     .project-images {
       grid-template-columns: 1fr 1fr 1fr;

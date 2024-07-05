@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import IndButton from "@/components/Dashboard/IndButton";
 import { getProject } from "@/sanity/sanity-utils";
 
@@ -28,14 +27,12 @@ const ProjectSection = ({ params }: Props) => {
   const [projectData, setProjectData] = useState<Project>();
   const [imagesLoaded, setImagesLoaded] = useState(0);
   const [totalImages, setTotalImages] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchproject = async () => {
       const project = await getProject(params.project);
       setProjectData(project);
       setTotalImages(project.images.length);
-      setIsLoading(false);
     };
     fetchproject();
   }, [params.project]);
@@ -54,7 +51,7 @@ const ProjectSection = ({ params }: Props) => {
         <h4>{projectData?.name}</h4>
         {projectData && <IndButton project={projectData} />}
       </div>
-      {isLoading && (
+      {imagesLoaded < totalImages && (
         <div className="loading">
           <p>{loadingPercentage}%</p>
         </div>
@@ -67,9 +64,9 @@ const ProjectSection = ({ params }: Props) => {
               <img
                 src={image.url}
                 alt={image._id}
-                loading="lazy"
                 sizes="(max-width: 768px) 600px, (max-width: 1200px) 1000px, 2000px"
                 onLoad={handleImageLoad}
+                loading="lazy"
               />
             </div>
           ))}

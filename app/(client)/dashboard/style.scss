@@ -89,6 +89,10 @@
 @media screen and (min-width: 820px) {
   #dashboard {
     #adminDashboard {
+      .loading {
+        bottom: 1vw;
+        right: 1vw;
+      }
       .all {
         overflow-x: auto;
       }
@@ -101,6 +105,9 @@
 @media screen and (min-width: 1025px) {
   #dashboard {
     #adminDashboard {
+      .loading {
+        font-size: 0.8rem;
+      }
       .all {
         height: 60px;
         a {
