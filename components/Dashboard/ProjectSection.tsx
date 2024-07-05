@@ -26,14 +26,27 @@ type Props = {
 
 const ProjectSection = ({ params }: Props) => {
   const [projectData, setProjectData] = useState<Project>();
+  const [imagesLoaded, setImagesLoaded] = useState(0);
+  const [totalImages, setTotalImages] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchproject = async () => {
       const project = await getProject(params.project);
       setProjectData(project);
+      setTotalImages(project.images.length);
+      setIsLoading(false);
     };
     fetchproject();
-  }, []);
+  }, [params.project]);
+
+  const handleImageLoad = () => {
+    setImagesLoaded((prev) => prev + 1);
+  };
+
+  const loadingPercentage = totalImages
+    ? Math.round((imagesLoaded / totalImages) * 100)
+    : 0;
 
   return (
     <section id="project">
@@ -41,6 +54,12 @@ const ProjectSection = ({ params }: Props) => {
         <h4>{projectData?.name}</h4>
         {projectData && <IndButton project={projectData} />}
       </div>
+      {isLoading && (
+        <div className="loading">
+          <p>{loadingPercentage}%</p>
+        </div>
+      )}
+
       <div className="project-images">
         {projectData &&
           projectData.images.map((image) => (
@@ -50,6 +69,7 @@ const ProjectSection = ({ params }: Props) => {
                 alt={image._id}
                 loading="lazy"
                 sizes="(max-width: 768px) 600px, (max-width: 1200px) 1000px, 2000px"
+                onLoad={handleImageLoad}
               />
             </div>
           ))}

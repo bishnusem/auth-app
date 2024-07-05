@@ -12,6 +12,14 @@
     flex-direction: column;
     align-items: center;
 
+    .loading {
+      position: fixed;
+      z-index: 10;
+      bottom: 4vw;
+      right: 4vw;
+      opacity: 0.5;
+    }
+
     button {
       width: 200px;
       height: 40px;
